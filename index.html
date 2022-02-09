@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html ng-app="myManagers" ng-controller="ManagerCtrl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="Managers.js"></script>
+    
+    <title>Real Estate Management System-Construction Management System Login</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!---<script src = "construction.js" ></script>-->
+  <style>
+        td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+
+    th{
+      border:1px solid blue;
+      padding: 4px;
+      text-align: left;
+    }
+    form {
+      border: 3px solid;
+
+    }
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 14px 20px;
+      color: black;
+      margin: 8px 0;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    color: white;
+    animation: header 3s ease-in-out;
+}
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .cancelbtn {
+      width: auto;
+      color: black;
+      padding: 10px 18px;
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+    span.psw {
+      float: right;
+      padding-top: 16px;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+
+    th{
+      border:1px solid blue;
+      padding: 4px;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+  h1{
+            align-items: center;
+            text-align: center;
+            background-color: #2eca6a;
+        }
+        button{
+
+            background-color: #2eca6a;
+            border-radius: 30px;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+}
+
+  </style>
+</head>
+
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+  <div class="title-box-d">
+    <h3 class="title-d">Login</h3>
+  </div>
+  <span class="close-box-collapse right-boxed bi bi-x"></span>
+  <div class="box-collapse-wrap form">
+    <form action="property-single.html" onsubmit="return test()">
+    
+    
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" onkeypress="return test(event)" placeholder="Enter Username" name="uname">
+        <label id="lbuser" style="color: red; visibility: hidden;">Invalid User</label><br>
+       
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw">
+
+        
+        <button type="submit">Submit</button>
+      </div>
+    
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+    <div>
+      <p>If you want to sign-up, contact the manager of the project.</p>
+    </div>
+  </div>
+</div><!-- End Property Search Section -->
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">RealEstate<span class="color-b">System</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Construction Management</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="property-grid.html">Lease/Rent</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="property-grid.html">Loan/Finance</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="blog-grid.html">Buying/Selling</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="property-grid.html">Careers</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Management</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="property-single.html">Customer Service Management</a>
+              <a class="dropdown-item " href="blog-single.html">Services Management</a>
+              <a class="dropdown-item " href="agents-grid.html">Security and Parking Management</a>
+              <a class="dropdown-item " href="agent-single.html">Renovation</a>
+              <a class="dropdown-item " href="agent-single.html">Interior Designing Management</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        Log in
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+<body>
+
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <div class="container">
+    <table>
+      <tr>
+        <td colspan="2" class="header">
+          <H1>Construction Management</H1>
+          </td>
+          </tr>
+          <tr>
+            <td class="leftMenu">
+              <a href="#/Home">Home</a>
+              <a href="#/Managers">Managers</a>
+              <a href="#/Employees">Employees Details</a>
+            </td>
+            <td class="MainContent">
+              <ng-view></ng-view>
+            </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="footer">
+                <b>www.RealEstateManagement.com</b>
+              </td>
+            </tr>
+            </table>
+            <br><br>
+            <br><br>
+            <script src="SinglePage.js"></script>
+            </div>
+            <div ng-controller="ManagerCtrl">
+        Rows to Display:<input type="number" step="1" min="0" max="6" ng-model="rowlimit"/><br><br>
+        Enter number of characters:<input type="text" placeholder="Search CustomerId" ng-model="limit"/><br><br>
+        <p style="text-align: center;">Manager Details</p>
+<table cellpadding="2" cellspacing="2" borders="1">
+    <tr>
+        <th scope="col" ng-click="orderByall('name')">Name
+            <br>
+            <input type="text" ng-model="search.name" placeholder="Seach Manager" >
+        </th>
+        <th scope="col" ng-click="orderByall('phone')">Phone
+            <br>
+            <input type="text" ng-model="search.phone" placeholder= "Search phone number">
+        </th>
+        <th scope="col" ng-click="orderByall('address')">Address
+            <br>
+            <input type="text" ng-model="search.address" placeholder="search Address">
+        </th>
+        <th scope="col" ng-click="orderByall('age')">Age
+            <br>
+            <input type="text" ng-model="search.age" placeholder="Search Age">
+        </th>
+        <th scope="col" ng-click="orderByall('Projects')" >Projects
+            <br>
+            <input type="text" ng-model="search.Projects" placeholder="Search Projects">
+        </th>
+        <th scope="col" ng-click="orderByall('salary')" >Salary
+            <br>
+            <input type="text" ng-model="search.salary" placeholder="Search Salary">
+        </th>
+    </tr>
+   
+    <tbody>
+        <tr ng-repeat="item in names| limitTo:rowlimit |filter:search| orderBy:myOrderBy ">
+            <td>{{item.name|myfilterid:limit}}</td>
+            <td>{{item.phone|number:0}}</td>
+            <td>{{item.address|lowercase}}</td>
+            <td>{{item.age|number:0}}</td>
+            <td>{{item.projects|uppercase}}</td>
+            <td>{{item.salary|currency: "Rs. "}}</td>
+           
+
+        </tr>
+    </tbody>
+</table>
+</div>
+</center>
+
+</body>
+<main id="main">
+<!-- =======Intro Single ======= -->
+<section class="intro-single">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-8">
+      <div class="title-single-box">
+        <h1 class="title-single">Our Amazing Agents</h1>
+        <span class="color-text-a">Grid Properties</span>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-4">
+      <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Home</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Agents Grid
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+</section><!-- End Intro Single-->
+
+<!-- ======= Agents Grid ======= -->
+<section class="agents-grid grid">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card-box-d">
+        <div class="card-img-d">
+          <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
+        </div>
+        <div class="card-overlay card-overlay-hover">
+          <div class="card-header-d">
+            <div class="card-title-d align-self-center">
+              <h3 class="title-d">
+                <a href="#" class="link-two">Margaret Sotillo
+                  <br> Escala</a>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body-d">
+            <p class="content-d color-text-a">
+              Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+            </p>
+            <div class="info-agents color-a">
+              <p>
+                <strong>Phone: </strong> +54 356 945234
+              </p>
+              <p>
+                <strong>Email: </strong> agents@example.com
+              </p>
+            </div>
+          </div>
+          <div class="card-footer-d">
+            <div class="socials-footer d-flex justify-content-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box-d">
+        <div class="card-img-d">
+          <img src="assets/img/agent-2.jpg" alt="" class="img-d img-fluid">
+        </div>
+        <div class="card-overlay card-overlay-hover">
+          <div class="card-header-d">
+            <div class="card-title-d align-self-center">
+              <h3 class="title-d">
+                <a href="#" class="link-two">Margaret Sotillo
+                  <br> Escala</a>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body-d">
+            <p class="content-d color-text-a">
+              Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+            </p>
+            <div class="info-agents color-a">
+              <p>
+                <strong>Phone: </strong> +54 356 945234
+              </p>
+              <p>
+                <strong>Email: </strong> agents@example.com
+              </p>
+            </div>
+          </div>
+          <div class="card-footer-d">
+            <div class="socials-footer d-flex justify-content-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box-d">
+        <div class="card-img-d">
+          <img src="assets/img/agent-3.jpg" alt="" class="img-d img-fluid">
+        </div>
+        <div class="card-overlay card-overlay-hover">
+          <div class="card-header-d">
+            <div class="card-title-d align-self-center">
+              <h3 class="title-d">
+                <a href="#" class="link-two">Margaret Sotillo
+                  <br> Escala</a>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body-d">
+            <p class="content-d color-text-a">
+              Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+            </p>
+            <div class="info-agents color-a">
+              <p>
+                <strong>Phone: </strong> +54 356 945234
+              </p>
+              <p>
+                <strong>Email: </strong> agents@example.com
+              </p>
+            </div>
+          </div>
+          <div class="card-footer-d">
+            <div class="socials-footer d-flex justify-content-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box-d">
+        <div class="card-img-d">
+          <img src="assets/img/agent-5.jpg" alt="" class="img-d img-fluid">
+        </div>
+        <div class="card-overlay card-overlay-hover">
+          <div class="card-header-d">
+            <div class="card-title-d align-self-center">
+              <h3 class="title-d">
+                <a href="#" class="link-two">Margaret Sotillo
+                  <br> Escala</a>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body-d">
+            <p class="content-d color-text-a">
+              Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+            </p>
+            <div class="info-agents color-a">
+              <p>
+                <strong>Phone: </strong> +54 356 945234
+              </p>
+              <p>
+                <strong>Email: </strong> agents@example.com
+              </p>
+            </div>
+          </div>
+          <div class="card-footer-d">
+            <div class="socials-footer d-flex justify-content-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box-d">
+        <div class="card-img-d">
+          <img src="assets/img/agent-1.jpg" alt="" class="img-d img-fluid">
+        </div>
+        <div class="card-overlay card-overlay-hover">
+          <div class="card-header-d">
+            <div class="card-title-d align-self-center">
+              <h3 class="title-d">
+                <a href="#" class="link-two">Margaret Sotillo
+                  <br> Escala</a>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body-d">
+            <p class="content-d color-text-a">
+              Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+            </p>
+            <div class="info-agents color-a">
+              <p>
+                <strong>Phone: </strong> +54 356 945234
+              </p>
+              <p>
+                <strong>Email: </strong> agents@example.com
+              </p>
+            </div>
+          </div>
+          <div class="card-footer-d">
+            <div class="socials-footer d-flex justify-content-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box-d">
+        <div class="card-img-d">
+          <img src="assets/img/agent-6.jpg" alt="" class="img-d img-fluid">
+        </div>
+        <div class="card-overlay card-overlay-hover">
+          <div class="card-header-d">
+            <div class="card-title-d align-self-center">
+              <h3 class="title-d">
+                <a href="#" class="link-two">Margaret Sotillo
+                  <br> Escala</a>
+              </h3>
+            </div>
+          </div>
+          <div class="card-body-d">
+            <p class="content-d color-text-a">
+              Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+            </p>
+            <div class="info-agents color-a">
+              <p>
+                <strong>Phone: </strong> +54 356 945234
+              </p>
+              <p>
+                <strong>Email: </strong> agents@example.com
+              </p>
+            </div>
+          </div>
+          <div class="card-footer-d">
+            <div class="socials-footer d-flex justify-content-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="link-one">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <nav class="pagination-a">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">
+              <span class="bi bi-chevron-left"></span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item next">
+            <a class="page-link" href="#">
+              <span class="bi bi-chevron-right"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+</section><!-- End Agents Grid-->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<section class="section-footer">
+<div class="container">
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <div class="widget-a">
+      <div class="w-header-a">
+        <h3 class="w-title-a text-brand">EstateAgency</h3>
+      </div>
+      <div class="w-body-a">
+        <p class="w-text-a color-text-a">
+          Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+          sed aute irure.
+        </p>
+      </div>
+      <div class="w-footer-a">
+        <ul class="list-unstyled">
+          <li class="color-a">
+            <span class="color-text-a">Phone .</span> contact@example.com
+          </li>
+          <li class="color-a">
+            <span class="color-text-a">Email .</span> +54 356 945234
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4 section-md-t3">
+    <div class="widget-a">
+      <div class="w-header-a">
+        <h3 class="w-title-a text-brand">The Company</h3>
+      </div>
+      <div class="w-body-a">
+        <div class="w-body-a">
+          <ul class="list-unstyled">
+            <li class="item-list-a">
+              <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+            </li>
+            <li class="item-list-a">
+              <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+            </li>
+            <li class="item-list-a">
+              <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+            </li>
+            <li class="item-list-a">
+              <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+            </li>
+            <li class="item-list-a">
+              <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+            </li>
+            <li class="item-list-a">
+              <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4 section-md-t3">
+    <div class="widget-a">
+      <div class="w-header-a">
+        <h3 class="w-title-a text-brand">International sites</h3>
+      </div>
+      <div class="w-body-a">
+        <ul class="list-unstyled">
+          <li class="item-list-a">
+            <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+          </li>
+          <li class="item-list-a">
+            <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+          </li>
+          <li class="item-list-a">
+            <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+          </li>
+          <li class="item-list-a">
+            <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+          </li>
+          <li class="item-list-a">
+            <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+          </li>
+          <li class="item-list-a">
+            <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <nav class="nav-footer">
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="#">Home</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">About</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">Property</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">Blog</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="socials-a">
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="#">
+            <i class="bi bi-facebook" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">
+            <i class="bi bi-twitter" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">
+            <i class="bi bi-instagram" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright-footer">
+      <p class="copyright color-text-a">
+        &copy; Copyright
+        <span class="color-a">EstateAgency</span> All Rights Reserved.
+      </p>
+    </div>
+    <div class="credits">
+      <!--
+      All the links in the footer should remain intact.
+      You can delete the links only if you purchased the pro version.
+      Licensing information: https://bootstrapmade.com/license/
+      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+    -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </div>
+</div>
+</div>
+</footer><!-- End  Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+</html>

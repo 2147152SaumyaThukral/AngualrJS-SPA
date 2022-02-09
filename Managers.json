@@ -1,0 +1,14 @@
+{
+    "Managers":[
+{"name":"Saumya","phone":8900230323, "address":"Bannerghatta Road", "age":23, "Projects":"Woods, Citadel", "salary":6700},
+{"name":"Kai", "phone":1234567890, "address":"JP Nagar", "age":27, "projects":"Deepa, Citadel", "salary":1200},
+{"name":"Jess", "phone":8976544522, "address":"JP Nagar", "age":33, "projects":"Paradise, Song", "salary":1950},
+{"name":"Kavita", "phone":3225436819, "address":"Bannerghatta", "age":41, "projects":"Woods, Song", "salary":3400},
+{"name":"Minho", "phone":2325182735, "address":"Hosur Road", "age":24, "projects":"Citadel, Song", "salary":3750},
+{"name":"Bilal", "phone":3223416627, "address":"Gottigere", "age":23, "projects":"Paradise, Prestige", "salary":2800},
+{"name":"Pandey", "phone":3234145562, "address":"Indiranagar", "age":27, "projects":"Song, Prestige", "salary":3700},
+{"name":"Aashi", "phone":8996777739, "address":"Majestic", "age":25, "projects":"Woods, Prestige", "salary":2900}
+]
+}
+
+

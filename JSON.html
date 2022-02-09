@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myManagers">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="Managers.js"></script>
+<body ng-controller="ManagerCtrl">
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <div ng-controller="ManagerCtrl">
+        Rows to Display:<input type="number" step="1" min="0" max="6" ng-model="rowlimit"/><br><br>
+        Enter number of characters:<input type="text" placeholder="Search CustomerId" ng-model="limit"/><br><br>
+        <p style="text-align: center;">Manager Details</p>
+<table cellpadding="2" cellspacing="2" borders="1">
+    <tr>
+        <th scope="col" ng-click="orderByall('name')">Name
+            <br>
+            <input type="text" ng-model="search.name" placeholder="Seach Manager" >
+        </th>
+        <th scope="col" ng-click="orderByall('phone')">Phone
+            <br>
+            <input type="text" ng-model="search.phone" placeholder= "Search phone number">
+        </th>
+        <th scope="col" ng-click="orderByall('address')">Address
+            <br>
+            <input type="text" ng-model="search.address" placeholder="search Address">
+        </th>
+        <th scope="col" ng-click="orderByall('age')">Age
+            <br>
+            <input type="text" ng-model="search.age" placeholder="Search Age">
+        </th>
+        <th scope="col" ng-click="orderByall('Projects')" >Projects
+            <br>
+            <input type="text" ng-model="search.Projects" placeholder="Search Projects">
+        </th>
+        <th scope="col" ng-click="orderByall('salary')" >Salary
+            <br>
+            <input type="text" ng-model="search.salary" placeholder="Search Salary">
+        </th>
+    </tr>
+   
+    <tbody>
+        <tr ng-repeat="item in names| limitTo:rowlimit |filter:search| orderBy:myOrderBy ">
+            <td>{{item.name|myfilterid:limit}}</td>
+            <td>{{item.phone|number:0}}</td>
+            <td>{{item.address|lowercase}}</td>
+            <td>{{item.age|number:0}}</td>
+            <td>{{item.projects|uppercase}}</td>
+            <td>{{item.salary|currency: "Rs. "}}</td>
+           
+
+        </tr>
+    </tbody>
+</table>
+</div>
+</center>
+</body>
+</head>
+</html>
